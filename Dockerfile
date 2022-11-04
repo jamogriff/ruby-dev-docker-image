@@ -16,11 +16,3 @@ RUN apk add --update npm && npm install --global yarn && corepack enable && core
 # ------------ User Related Stuff -----------
 USER $username
 RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-RUN yarn init -2
-
-# Ruby env configuration
-ENV GEM_HOME="/usr/local/bundle"
-ENV PATH $GEM_HOME/bin:$GEM_HOME/gems/bin:$PATH
-# Unset these to allow for calling Gem bin's directly
-RUN unset BUNDLE_PATH && unset BUNDLE_BIN
-RUN bundle install
